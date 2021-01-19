@@ -47,14 +47,6 @@ public class MainActivity extends AppCompatActivity {
         mListView = findViewById(R.id.myList);
         gameAdadpter = new ArrayAdapter<Guess>(this, android.R.layout.simple_list_item_1, state.getGuesses());
         mListView.setAdapter(gameAdadpter);
-
-        mListView.setOnClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        });
     }
 
     public void loadGameState(View v) {
@@ -78,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSettings(View v) {
-        List settings = new ArrayList<>();
+        List<Object> settings = new ArrayList<>();
         settings.add("Alphabet");
         settings.add(alphabet.stream().reduce((a, b) -> a + ", " + b).get());
         settings.add("codeLength");
@@ -92,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         settings.add("correctCodeElementSign");
         settings.add(correctCodeElementSign);
         settings.add("START NEW GAME");
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, settings);
+        ArrayAdapter<Object> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, settings);
         mListView.setAdapter(adapter);
     }
 
